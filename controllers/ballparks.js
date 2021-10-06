@@ -7,7 +7,7 @@ let connection = mysql.createConnection(
 function listBallparks(req, res){
     console.log('controller.ballparks.list', req.params)
     //select all users from ballparks 
-    pool.query('select ballpark_id, ballpark_name from ballparks', function(err, rows){
+    connection.query('select ballpark_id, ballpark_name from ballparks', function(err, rows){
         if(err){
             return res.json({
                 'error': true, 
