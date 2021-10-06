@@ -1,13 +1,17 @@
 const mysql = require('mysql');
-let connection = mysql.createConnection(
-    process.env.CLEARDB_DATABASE_URL
-)
+let pool = mysql.createPool({
+    connectionLimit: 100,
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DEFAULT_SCHEMA
+  })
 
 
 function listBallparks(req, res){
     console.log('controller.ballparks.list', req.params)
     //select all users from ballparks 
-    connection.query('select ballpark_id, ballpark_name from ballparks', function(err, rows){
+    pool.query('select ballpark_id, ballpark_name from ballparks', function(err, rows){
         if(err){
             return res.json({
                 'error': true, 
