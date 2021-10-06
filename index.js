@@ -1,5 +1,6 @@
 let express = require('express');
 require('dotenv').config();
+const mysql = require('mysql')
 
 let app = express();
 
@@ -9,6 +10,9 @@ app.get('/', function(req, res){
     res.send('hello- '+ process.env.secretcode);
 })
 
+
+
 app.listen(PORT, function(){
     console.log('starting application on port', PORT)
 })
+
