@@ -1,11 +1,5 @@
 const mysql = require('mysql');
-let pool = mysql.createPool({
-    connectionLimit: 100,
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DEFAULT_SCHEMA
-  })
+const pool = require('../sql/connection');
 
 
 function listBallparks(req, res){
