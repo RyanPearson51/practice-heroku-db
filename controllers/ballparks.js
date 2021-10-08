@@ -21,9 +21,9 @@ let showBallpark = function(req, res){
     console.log('controller.users.show', req.params)
     //code to return single user by id
     //id is path param
-    let sql = "";
+    let sql = "select * from ballparks where team = ?";
     //const replacements = []
-    sql = mysql.format(sql, [req.params.id]);
+    sql = mysql.format(sql, [req.params.team]);
     pool.query(sql, function(err, rows){
         if(err){
             return res.json({

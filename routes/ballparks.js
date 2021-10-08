@@ -8,9 +8,9 @@ const controller = require('../controllers/ballparks')
 //show all users
 router.get('/ballparks', controller.listBallparks)
 
-//GET users/:id
-//show specific user by id
-router.get('/ballparks/:id', controller.showBallpark)
+//GET users/:name
+//show specific user by name
+router.get('/ballparks/:team', controller.showBallpark)
 
 //POST users
 //create a new user

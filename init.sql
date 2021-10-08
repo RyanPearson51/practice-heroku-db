@@ -39,8 +39,8 @@ insert into ballparks
     (30, 'Nationals Park', 'WashingtonDC', 'Nationals');
 
 CREATE TABLE reviews (
-	user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    ballpark_id int(2),
+    ballpark_id int(2) primary key,
+    user_id int(10),
     ballpark_name varchar(50)
     overall_rating int(1),
     location_rating int(1),

@@ -12,6 +12,8 @@ app.get('/', function(req, res){
 
 let ballparksRoutes = require('./routes/ballparks');
 app.use(ballparksRoutes);
+let authRoutes = require('./routes/auth');
+app.use(authRoutes);
 
 app.listen(PORT, function(){
     console.log('starting application on port', PORT)
