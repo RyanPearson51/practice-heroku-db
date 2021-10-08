@@ -10,7 +10,8 @@ app.get('/', function(req, res){
     res.send('hello- '+ process.env.secretcode);
 })
 
-
+let ballparksRoutes = require('./routes/ballparks');
+app.use(ballparksRoutes);
 
 app.listen(PORT, function(){
     console.log('starting application on port', PORT)
