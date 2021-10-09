@@ -49,15 +49,16 @@ CREATE TABLE reviews (
     comments varchar(140)
 );
 
-INSERT INTO reviews
-    (ballpark_id, user_id, ballpark_name, overall_rating, location_rating, food_rating, seating_rating, comments) VALUES
-    (001, 07, )
+-- INSERT INTO reviews
+    -- (ballpark_id, user_id, ballpark_name, overall_rating, location_rating, food_rating, seating_rating, comments) VALUES
+   -- (001, 07, )
 
 
 
 create table users(
 	user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	username char(25) unique not null,
-    password char(50) not null
+    password char(50) not null,
+    email varchar(50)
 )
 
