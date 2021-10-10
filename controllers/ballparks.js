@@ -2,6 +2,7 @@ const mysql = require('mysql');
 const pool = require('../sql/connection');
 
 
+
 function listBallparks(req, res){
     console.log('controller.ballparks.list', req.params)
     //select all users from ballparks 
@@ -79,30 +80,9 @@ let updateBallpark = function(req, res){
  
 }
 
-let deleteBallpark = function(req, res){
-    console.log('controller.users.delete', req.body)
-     //code to delete a user from the database
-     let sql = "";
-     //const replacements = []
-     sql = mysql.format(sql, []);
-     pool.query(sql, function(err, rows){
-         if(err){
-             return res.json({
-                 'error': true, 
-                 'message': 'error occured:' + err
-         })
-     } else{
-         res.json(rows);
-     }
-     })
-
- 
-}
-
 module.exports = {
     listBallparks,
     showBallpark,
     createBallpark,
-    updateBallpark,
-    deleteBallpark
+    updateBallpark
 }

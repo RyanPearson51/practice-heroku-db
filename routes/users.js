@@ -3,15 +3,12 @@ const usersController = require('../controllers/users')
 const { checkJwt } = require('../middleware')
 const router = express.Router()
 
-router.get('/', usersController.getAllUsers)
+router.get('/users', usersController.getAllUsers)
 
-router.get('/:id', usersController.getUserById)
+router.get('/users/:username', usersController.getUserByUsername)
 
-router.post('/', checkJwt, usersController.createUser)
+//router.post('/users', checkJwt, usersController.createUser)
 
-router.put('/:id', checkJwt, usersController.updateUserById)
-
-router.delete('/:username', checkJwt, usersController.deleteUserByUsername)
+router.delete('/users/:username', checkJwt, usersController.deleteUserByUsername)
 
 module.exports = router
-//q

@@ -10,6 +10,7 @@ app.get('/', function(req, res){
     res.send('hello- '+ process.env.secretcode);
 })
 
+app.use(express.json());
 let ballparksRoutes = require('./routes/ballparks');
 app.use(ballparksRoutes);
 

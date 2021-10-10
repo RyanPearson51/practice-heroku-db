@@ -1,6 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
+const { checkJwt } = require('../middleware')
 
 const controller = require('../controllers/ballparks')
 
@@ -14,15 +15,11 @@ router.get('/ballparks/:team', controller.showBallpark)
 
 //POST users
 //create a new user
-router.post('/ballparks', controller.createBallpark)
+router.post('/ballparks', checkJwt, controller.createBallpark)
 
 //update users
-//update a single user in the database
-router.put('/ballparks/:id', controller.updateBallpark)
-
-//delete user
-//delete a user from the database
-router.delete('/ballparks/:id', controller.deleteBallpark)
+//update a single ballpark in the database
+router.put('/ballparks/:team', checkJwt, controller.updateBallpark)
 
 
 module.exports = router;

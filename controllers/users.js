@@ -2,6 +2,7 @@ const mysql = require('mysql')
 const pool = require('../sql/connection')
 const { handleSQLError } = require('../sql/error')
 
+
 const getAllUsers = (req, res) => {
   pool.query("SELECT * FROM users", (err, rows) => {
     if (err) return handleSQLError(res, err)
@@ -9,9 +10,9 @@ const getAllUsers = (req, res) => {
   })
 }
 
-const getUserById = (req, res) => {
-  let sql = "SELECT * FROM users WHERE user_id = ?"
-  sql = mysql.format(sql, [ req.params.user_id ])
+const getUserByUsername = (req, res) => {
+  let sql = "SELECT * FROM users WHERE username = ?"
+  sql = mysql.format(sql, [ req.params.username ])
 
   pool.query(sql, (err, rows) => {
     if (err) return handleSQLError(res, err)
@@ -19,27 +20,16 @@ const getUserById = (req, res) => {
   })
 }
 
-const createUser = (req, res) => {
-  const { username, password, email } = req.body
-  let sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)"
-  sql = mysql.format(sql, [ username, password, email ])
+/*const createUser = (req, res) => {
+  const { username, p_word, email } = req.body
+  let sql = "INSERT INTO users (username, p_word, email) VALUES (?, ?, ?)"
+  sql = mysql.format(sql, [ username, p_word, email ])
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err)
     return res.json({ newId: results.insertId });
   })
-}
-
-const updateUserById = (req, res) => {
-  const { username } = req.body
-  let sql = "UPDATE users SET username = ? WHERE user_id = ?"
-  sql = mysql.format(sql, [ username, req.params.user_id ])
-
-  pool.query(sql, (err, results) => {
-    if (err) return handleSQLError(res, err)
-    return res.status(204).json();
-  })
-}
+}*/
 
 const deleteUserByUsername = (req, res) => {
   let sql = "DELETE FROM users WHERE username = ?"
@@ -53,8 +43,7 @@ const deleteUserByUsername = (req, res) => {
 
 module.exports = {
   getAllUsers,
-  getUserById,
-  createUser,
-  updateUserById,
+  getUserByUsername,
+  //createUser,
   deleteUserByUsername
 }
