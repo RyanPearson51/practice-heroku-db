@@ -14,7 +14,7 @@ router.get('/ballparks', controller.listBallparks)
 router.get('/ballparks/:team', controller.showBallpark)
 
 //POST users
-//create a new user
+//create a new ballpark
 router.post('/ballparks', checkJwt, controller.createBallpark)
 
 //update users
