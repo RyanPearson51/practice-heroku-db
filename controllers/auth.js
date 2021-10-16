@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const pool = require('../sql/connection')
 const { handleSQLError } = require('../sql/error')
-//const jwtSecret = ?
+const { checkJwt } = require('../middleware')
+const jwtSecret = process.env.jwtsecret;
 
 // for bcrypt
 /*
@@ -111,7 +112,7 @@ let signup = (req,res) => {
   let password = req.body.p_word;
   
   let passHash = bcrypt.hashSync(password,5);
-
+  console.log(passHash, password);
   let sql = "INSERT INTO users( username, p_word) VALUES (?,?)";
   pool.query(sql, [username,passHash], (err,rows) => {
       if(err){
@@ -137,12 +138,15 @@ let login = (req,res) => {
       }
       if(!err && rows.length == 1){
           let row = rows[0];
-          let hash = row.password;
+          let hash = row.p_word;
+          console.log('password:', password,'hash:', hash)
+          role = row.role;
           goodPassword = bcrypt.compareSync(password, hash);
       }
       if(goodPassword){
           const unsignedToken = {
-              username : username
+              username : username,
+              role : role
           }
           const accessToken = jwt.sign(unsignedToken, jwtSecret);
           res.send(accessToken);
