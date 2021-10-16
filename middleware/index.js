@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 let express = require('express'); 
 let app = express();
 app.use(express.json())
-const jwtSecret = process.env.jwtsecret;
+const jwtSecret = process.env.jwtSecret;
 
 const logger = () => {}
 
