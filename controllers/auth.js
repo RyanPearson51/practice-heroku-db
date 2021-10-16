@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const pool = require('../sql/connection')
 const { handleSQLError } = require('../sql/error')
 const { checkJwt } = require('../middleware')
-const jwtSecret = process.env.jwtsecret;
+const jwtSecret = process.env.jwtSecret;
 
 // for bcrypt
 /*
