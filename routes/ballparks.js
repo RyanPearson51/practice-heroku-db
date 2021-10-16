@@ -5,12 +5,12 @@ const { checkJwt } = require('../middleware')
 
 const controller = require('../controllers/ballparks')
 
-//GET users
-//show all users
+//GET ballparks
+//show all ballparks
 router.get('/ballparks', controller.listBallparks)
 
-//GET users/:name
-//show specific user by name
+//GET ballparks/:team
+//show specific ballpark by team
 router.get('/ballparks/:team', controller.showBallpark)
 
 //POST users
