@@ -21,9 +21,7 @@ const checkJwt = jwt({
   algorithms: ['RS256']
 });*/
 
-let isAdmin = (req,res,next) => {
-  req.isAdmin ? next() : res.status(401).send("Not Authorized");
-}
+
 
 
 let checkJwt = (req,res,next) => {
