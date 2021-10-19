@@ -150,7 +150,7 @@ let login = (req,res) => {
           }
           const accessToken = jwt.sign(unsignedToken, jwtSecret);
           res.send(accessToken);
-          consle.log('logged in')
+          console.log('logged in')
       }else{
           res.status(401).send("Not Authorized");
       }
