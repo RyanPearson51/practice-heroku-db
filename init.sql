@@ -62,3 +62,15 @@ create table users(
     email varchar(50)
 )
 
+CREATE TABLE reviews (
+    user_id int(10),
+    team int(2),
+    ballpark_id int(2) primary key,
+    overall_rating int not null check(overall_rating between 1 and 5),
+    location int not null check(location between 1 and 5),
+    food int not null check(food between 1 and 5),
+    seating int not null check(seating between 1 and 5),
+    comments varchar(250)
+);
+
+

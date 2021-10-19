@@ -11,6 +11,7 @@ app.get('/', function(req, res){
 })
 
 app.use(express.json());
+
 let ballparksRoutes = require('./routes/ballparks');
 app.use(ballparksRoutes);
 
@@ -19,6 +20,9 @@ app.use(usersRoutes);
 
 let authRoutes = require('./routes/auth');
 app.use(authRoutes);
+
+let reviewsRoutes = require('./routes/reviews');
+app.use(reviewsRoutes);
 
 
 app.listen(PORT, function(){
