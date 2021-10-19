@@ -31,7 +31,6 @@ const getUserByUsername = (req, res) => {
   })
 }*/
 
-/*-------delete*/
 const deleteUserByUsername = (req, res) => {
   let sql = "DELETE FROM users WHERE username = ?"
   sql = mysql.format(sql, [ req.params.username ])
@@ -41,7 +40,6 @@ const deleteUserByUsername = (req, res) => {
     return res.json({ message: `Deleted ${results.affectedRows} user(s)` });
   })
 }
-
 
 module.exports = {
   getAllUsers,
