@@ -5,7 +5,7 @@ const pool = require('../sql/connection');
 
 function listBallparks(req, res){
     console.log('controller.ballparks.list', req.params)
-    //select all users from ballparks 
+    //select all ballparks 
     pool.query('select ballpark_id, ballpark_name from ballparks', function(err, rows){
         if(err){
             return res.json({
@@ -20,7 +20,7 @@ function listBallparks(req, res){
 
 let showBallpark = function(req, res){
     console.log('controller.users.show', req.params)
-    //code to return single user by id
+    //code to return single ballpark by team name
     //id is path param
     let sql = "select * from ballparks where team = ?";
     //const replacements = []
@@ -38,8 +38,7 @@ let showBallpark = function(req, res){
 }
 
 
-//create user, assign it an id, add it to users array
-//content of user will be inside request body
+//create new ballpark
 
 function createBallpark(req, res){
     console.log('controller.users.create', req.body)
