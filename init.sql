@@ -51,6 +51,7 @@ CREATE TABLE reviews (
     user_id int(10),
     team int(2),
     ballpark_id int(2) primary key,
+    ballpark_name varchar(50)
     overall_rating int not null check(overall_rating between 1 and 5),
     location int not null check(location between 1 and 5),
     food int not null check(food between 1 and 5),

@@ -19,7 +19,7 @@ function listBallparks(req, res){
 }
 
 let showBallpark = function(req, res){
-    console.log('controller.users.show', req.params)
+    console.log('controller.ballparks.show', req.params)
     //code to return single ballpark by team name
     //id is path param
     let sql = "select * from ballparks where team = ?";
@@ -41,7 +41,7 @@ let showBallpark = function(req, res){
 //create new ballpark
 
 function createBallpark(req, res){
-    console.log('controller.users.create', req.body)
+    console.log('controller.ballparks.create', req.body)
     //SQL to create a new user using req.body
     let sql = "";
     //const replacements = []
@@ -60,7 +60,7 @@ function createBallpark(req, res){
 }
 
 let updateBallpark = function(req, res){
-    console.log('controller.users.update', req.body)
+    console.log('controller.ballparks.update', req.body)
     //code to update a user
     //this will set a new salary for a specific worker
     let sql = "";
