@@ -72,11 +72,22 @@ function createReview(req, res){
     })
 }
 
+const deleteReview = (req, res) => {
+    let sql = "DELETE FROM reviews WHERE user_id = ?"
+    sql = mysql.format(sql, [ req.params.user_id ])
+  
+    pool.query(sql, (err, results) => {
+      if (err) return handleSQLError(res, err)
+      return res.json({ message: `Deleted ${results.affectedRows} user(s)` });
+    })
+  }
+
 
 
 module.exports = {
     listReviews,
     showReview,
-    createReview
+    createReview,
+    deleteReview
     
 }

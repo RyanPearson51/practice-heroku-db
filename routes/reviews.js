@@ -9,5 +9,7 @@ router.get('/reviews/:ballpark_id', reviewsController.showReview)
 
 router.post('/reviews', reviewsController.createReview)
 
+router.delete('/reviews', reviewsController.deleteReview)
+
 
 module.exports = router
