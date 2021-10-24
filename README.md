@@ -39,12 +39,13 @@ post(create new review)
 CREATE TABLE reviews (
     user_id int(10),
     team(2),
-    ballpark_id int(2) primary key,
-    overall_rating int(1),
+    ballpark_id int(2),
+    overall_rating decimal(10,2),
     location int(1),
     food int(1),
     seating int(1),
     comments varchar(250), 
+    ballpark_name varchar (50)
 )
 
 Average scores: 
