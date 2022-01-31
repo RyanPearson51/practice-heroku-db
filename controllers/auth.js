@@ -5,7 +5,11 @@ const jwt = require('jsonwebtoken')
 const pool = require('../sql/connection')
 const { handleSQLError } = require('../sql/error')
 const { checkJwt } = require('../middleware')
+<<<<<<< HEAD
 const jwtSecret = process.env.jwtsecret;
+=======
+const jwtSecret = process.env.secretcode;
+>>>>>>> 818feb3769a947a90595e472990b12cbce571bce
 
 // for bcrypt
 /*
@@ -102,6 +106,62 @@ const login = (req, res) => {
          })
        })
    })
+}
+//
+
+*/
+let signup = (req,res) => {
+  console.log("POST /createUser", req.body.username);
+
+  let username = req.body.username;
+  let password = req.body.p_word;
+  
+  let passHash = bcrypt.hashSync(password,5);
+  console.log(passHash, password);
+  let sql = "INSERT INTO users( username, p_word) VALUES (?,?)";
+  pool.query(sql, [username,passHash], (err,rows) => {
+      if(err){
+          console.log("failed to create user", err);
+          res.status(500).send("Failed to create user");
+      }else{
+          res.send("User Created");
+      }
+  });
+}
+
+let login = (req,res) => {
+  console.log("-POST login-->", req.body.username);
+  const username = req.body.username;
+  const password = req.body.p_word;
+  pool.query("SELECT username, p_word FROM users WHERE username = ?", [username], (err,rows)=>{
+      let goodPassword = false;
+      if(err){
+          console.error("DB query error-->", err)
+      }
+      if(!rows.length){
+          console.log("Could not find row with that user-->",username);
+      }
+      if(!err && rows.length == 1){
+          let row = rows[0];
+          let hash = row.p_word;
+          console.log('password:', password,'hash:', hash)
+          role = row.role;
+          goodPassword = bcrypt.compareSync(password, hash);
+      }
+      if(goodPassword){
+          const unsignedToken = {
+              username : username,
+              role : role
+          }
+          const accessToken = jwt.sign(unsignedToken, jwtSecret);
+          res.send(accessToken);
+          console.log('logged in')
+      }else{
+          res.status(401).send("Not Authorized");
+      }
+  });
+  
+
 }
 
 */

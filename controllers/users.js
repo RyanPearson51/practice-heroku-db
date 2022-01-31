@@ -2,7 +2,7 @@ const mysql = require('mysql')
 const pool = require('../sql/connection')
 const { handleSQLError } = require('../sql/error')
 
-
+//get a list of users
 const getAllUsers = (req, res) => {
   pool.query("SELECT * FROM users", (err, rows) => {
     if (err) return handleSQLError(res, err)
@@ -10,6 +10,7 @@ const getAllUsers = (req, res) => {
   })
 }
 
+//get single user
 const getUserByUsername = (req, res) => {
   let sql = "SELECT * FROM users WHERE username = ?"
   sql = mysql.format(sql, [ req.params.username ])
@@ -31,6 +32,7 @@ const getUserByUsername = (req, res) => {
   })
 }*/
 
+//delete user
 const deleteUserByUsername = (req, res) => {
   let sql = "DELETE FROM users WHERE username = ?"
   sql = mysql.format(sql, [ req.params.username ])

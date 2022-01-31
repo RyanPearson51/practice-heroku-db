@@ -38,21 +38,6 @@ insert into ballparks
     (29, 'Rogers Centre', 'Toronto', 'BlueJays'),
     (30, 'Nationals Park', 'WashingtonDC', 'Nationals');
 
-CREATE TABLE reviews (
-    ballpark_id int(2) primary key,
-    user_id int(10),
-    ballpark_name varchar(50)
-    overall_rating int(1),
-    location_rating int(1),
-    food_rating int(1),
-    seating_rating int(1),
-    comments varchar(140)
-);
-
--- INSERT INTO reviews
-    -- (ballpark_id, user_id, ballpark_name, overall_rating, location_rating, food_rating, seating_rating, comments) VALUES
-   -- (001, 07, )
-
 
 
 create table users(
@@ -61,4 +46,17 @@ create table users(
     password char(50) not null,
     email varchar(50)
 )
+
+CREATE TABLE reviews (
+    user_id int(10),
+    team int(2),
+    ballpark_id int(2) primary key,
+    ballpark_name varchar(50)
+    overall_rating int not null check(overall_rating between 1 and 5),
+    location int not null check(location between 1 and 5),
+    food int not null check(food between 1 and 5),
+    seating int not null check(seating between 1 and 5),
+    comments varchar(250)
+);
+
 

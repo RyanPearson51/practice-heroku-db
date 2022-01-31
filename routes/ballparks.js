@@ -13,11 +13,11 @@ router.get('/ballparks', controller.listBallparks)
 //show specific ballpark by team
 router.get('/ballparks/:team', controller.showBallpark)
 
-//POST users
+//POST ballparks
 //create a new ballpark
 router.post('/ballparks', checkJwt, controller.createBallpark)
 
-//update users
+//update ballparks
 //update a single ballpark in the database
 router.put('/ballparks/:team', checkJwt, controller.updateBallpark)
 
