@@ -7,7 +7,7 @@ let app = express();
 let PORT = process.env.PORT;
 
 app.get('/', function(req, res){
-    res.send('hello- '+ process.env.secretcode);
+    res.send('routes:- '+ process.env.secretcode);
 })
 
 app.use(express.json());
