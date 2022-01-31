@@ -5,11 +5,8 @@ const jwt = require('jsonwebtoken')
 const pool = require('../sql/connection')
 const { handleSQLError } = require('../sql/error')
 const { checkJwt } = require('../middleware')
-<<<<<<< HEAD
 const jwtSecret = process.env.jwtsecret;
-=======
 const jwtSecret = process.env.secretcode;
->>>>>>> 818feb3769a947a90595e472990b12cbce571bce
 
 // for bcrypt
 /*
@@ -164,7 +161,7 @@ let login = (req,res) => {
 
 }
 
-*/
+/*
 let signup = (req,res) => {
   console.log("POST /createUser", req.body.username);
 
@@ -216,7 +213,7 @@ let login = (req,res) => {
   });
   
 
-}
+}*/
 
 module.exports = {
   signup,

@@ -3,11 +3,8 @@ const jwt = require('jsonwebtoken');
 let express = require('express'); 
 let app = express();
 app.use(express.json())
-<<<<<<< HEAD
 const jwtSecret = process.env.jwtSecret;
-=======
 const jwtSecret = process.env.secretcode;
->>>>>>> 818feb3769a947a90595e472990b12cbce571bce
 
 const logger = () => {}
 
@@ -25,13 +22,10 @@ const checkJwt = jwt({
   algorithms: ['RS256']
 });*/
 
-<<<<<<< HEAD
 
-=======
 let isAdmin = (req,res,next) => {
   req.isAdmin ? next() : res.status(401).send("Not Authorized");
 }
->>>>>>> 818feb3769a947a90595e472990b12cbce571bce
 
 
 let checkJwt = (req,res,next) => {
